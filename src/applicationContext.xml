@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>   
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+     xmlns="http://www.springframework.org/schema/beans"  
+     xsi:schemaLocation="http://www.springframework.org/schema/beans 
+     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">   
+     
+  <bean id="helloworld" class="com.hujt.spring.HelloWorld">
+  	<property name="name" value="zhangsan"></property>
+  </bean>
+  
+  <bean id="car" class="com.hujt.spring.Car">
+  	<constructor-arg value="Audi"></constructor-arg>
+  	<constructor-arg value="Shanhai"></constructor-arg>
+  	<constructor-arg value="300000" type="double"></constructor-arg>
+  </bean>
+  
+  <bean id="car2" class="com.hujt.spring.Car">
+  	<constructor-arg value="bmw"></constructor-arg>
+  	<constructor-arg>
+  		<value><![CDATA[<ShangHai>]]></value>
+  	</constructor-arg>
+  	<constructor-arg value="240" type="int"></constructor-arg>
+  </bean>
+  
+  <bean id="person" class="com.hujt.spring.Person">
+  	<property name="name" value="lili"></property>
+  	<property name="age" value="23"></property>
+  	<property name="car" ref="car2"></property>
+  	<property name="car.price" value="300000"></property>
+  </bean>
+  
+  <!--测试集合List属性-->
+  <bean id="person2" class="com.hujt.spring.collection.Person">
+  	<property name="name" value="Mike"></property>
+  	<property name="age" value="27"></property>
+  	<property name="car">
+  		<list>
+  			<ref bean="car"/>
+  			<ref bean="car2"/>
+  			<bean class="com.hujt.spring.Car">
+  				<constructor-arg value="Ford"></constructor-arg>
+  				<constructor-arg value="Changan"></constructor-arg>
+  				<constructor-arg value="300000"></constructor-arg>
+  				<constructor-arg value="10"></constructor-arg>
+  			</bean>
+  		</list>
+  	</property>
+  </bean>
+
+ <!--测试集合Map属性-->
+ <bean id="newperson" class="com.hujt.spring.collection.NewPerson">
+ 	<property name="name" value="Bob"></property>
+  	<property name="age" value="30"></property>
+  	<property name="car">
+  		<map>
+  			<entry key="AA" value-ref="car"/>
+  			<entry key="BB" value-ref="car2"/>
+  		</map>
+  	</property>
+ </bean>
+</beans> 
