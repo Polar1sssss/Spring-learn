@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>   
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+     xmlns="http://www.springframework.org/schema/beans"  
+     xsi:schemaLocation="http://www.springframework.org/schema/beans 
+     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+     xmlns:p="http://www.springframework.org/schema/p">   
+     
+     <!--通过静态工厂方法配置Bean，不是配置静态工厂方法实例，而是Bean实例-->
+	 <!--
+	 	class属性：指向静态工厂的全类名
+	 	factory-method：指向静态工厂方法的名字
+	 	constructor：如果工厂方法需要传递参数，使用此属性来配置参数
+	 -->
+     <bean id="car1"
+     	   class="com.hujt.spring.factory.StaticCarFac" 
+     	   factory-method="getCar">
+     	   <constructor-arg value="audi"></constructor-arg>
+     </bean>
+     
+     <!--配置工厂的实例-->
+     <!--
+     	factory-bean：指向实例工厂方法的bean
+     	factory-method：指向实力工厂方法的名字
+     -->
+     <bean id="inscarfac" class="com.hujt.spring.factory.InstanceCarFac">
+     </bean>
+     
+     <!--通过工厂的实例配置Bean-->
+     <bean id="car2" factory-bean="inscarfac" factory-method="getCar">
+     	<constructor-arg value="ford"></constructor-arg>
+     </bean>
+     
+</beans> 

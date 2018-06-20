@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="
+	   http://www.springframework.org/schema/beans
+	   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	   http://www.springframework.org/schema/context
+	   http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+     <!--指定Spring IOC容器扫描的包-->
+     <!--
+     	context:exclude-filter子结点表示排除指定表达式对应的组件
+     	context:include-filter子结点表示包含指定表达式对应的组件，需要user-default-filter属性来配合
+     -->
+     <context:component-scan base-package="com.hujt.spring.annotation">
+     </context:component-scan>
+     
+</beans> 
